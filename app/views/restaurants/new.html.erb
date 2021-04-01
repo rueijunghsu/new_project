@@ -1,36 +1,30 @@
 <h1>新增餐廳</h1>
 
-
-<form action="">
-	<div>
-	  <label for="">title</label>
-	  <input type="text">
+<%= form_for(Restaurant.new) do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
   </div>
 
-  <div>
-	  <label for=""></label>
-	  <input type="text">
+  <div class="field">
+    <%= f.label :tel %>
+    <%= f.text_field :tel %>
   </div>
 
-  <div>
-	  <label for=""></label>
-	  <input type="text">
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
   </div>
 
-  <div>
-	  <label for=""></label>
-	  <input type="text">
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
   </div>
 
-	<div>
-	  <label for=""></label>
-	  <textarea name="" id=""></textarea>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
   </div>
 
-	<div>
-	  <input type="submit" value="submit">
-  </div>
-
-
-
-</form>
+  <%= f.submit %>
+<% end %>
