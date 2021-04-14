@@ -15,25 +15,25 @@ class User < ApplicationRecord
     password = params[:password]
 
     salted_password = salted(password)
-    encrypted_password = encrypted(salted_password)
+    encrypted_password = encrypt(salted_password)
 
-    find_by(email: email, password: encrypted_password)
+    find_by(email: email, password: encryrotpted_password)
   end
 
   private
   def encrypt_password
-    salted_pwd = salted(password)
-    self.password = encrypt(salted_pwd)
+    salted_pwd = self.class.salted(password)
+    self.password = self.class.encrypt(salted_pwd)
     # self.password = Digest::SHA1.hexdigest(password)
     # self.password=(Digest::SHA1.hexdigest(password))
     # password = Digest::SHA1.hexdigest(password)
   end
 
-  def encrypt(password)
+  def self.encrypt(password)
     Digest::SHA1.hexdigest(password)
   end
 
-  def salted(password)
+  def self.salted(password)
     "123#{password}xx"
   end
 end
